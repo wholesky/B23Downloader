@@ -494,7 +494,7 @@ static auto qnComboBoxToolTip =
     "非 * 开头的为该视频可用的画质\n"
     "* 开头的画质不属于该视频, 但其他视频可能有\n"
     "注: 未登录/无会员 可能导致较高画质不可用";
-
+//选择下载路径和任务界面
 void DownloadDialog::setupUi()
 {
     activityTipDialog->accept();
@@ -571,9 +571,15 @@ void DownloadDialog::setupUi()
     pathLayoutFrame->setLineWidth(1);
     pathLayoutFrame->setMidLineWidth(0);
     auto pathLayout = new QHBoxLayout(pathLayoutFrame);
+    //20220423 modify
     pathLayout->addWidget(new QLabel("下载到: "));
+//    pathLayout->addWidget(new QLineEdit("下载到: "));
     pathLayout->setContentsMargins(2, 0, 1, 0);
-    pathLabel = new ElidedTextLabel;
+
+    pathLabel=new QLineEdit;
+//    pathLabel = new ElidedTextLabel;
+    //20220423 modify
+
     auto lastDir = Settings::inst()->value("lastDir").toString();
     if (lastDir.isEmpty() || !QDir(lastDir).exists()) {
         auto appDir = QDir{QCoreApplication::applicationDirPath()};
@@ -581,8 +587,11 @@ void DownloadDialog::setupUi()
     } else {
         pathLabel->setText(lastDir);
     }
-    pathLabel->setElideMode(Qt::ElideMiddle);
-    pathLabel->setHintWidthToString("/someDir/anime/百变小樱 第01话 不可思议的魔法书");
+    //20220423 delete
+//    pathLabel->setElideMode(Qt::ElideMiddle);
+//    pathLabel->setHintWidthToString("/someDir/anime/百变小樱 第01话 不可思议的魔法书");
+    //20220423 delete
+
     selPathButton = new QPushButton;
     selPathButton->setToolTip("选择文件夹");
     selPathButton->setIconSize(QSize(20, 20));

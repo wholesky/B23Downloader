@@ -1,4 +1,4 @@
-VERSION = 0.9.5
+VERSION = 1.1.0
 QT       += core gui network \
     quick
 

@@ -59,7 +59,10 @@ private:
     QComboBox *qnComboBox = nullptr;
     QPushButton *getQnListBtn = nullptr;
 
-    ElidedTextLabel *pathLabel;
+    //20220423 modify
+    QLineEdit *pathLabel;
+//    ElidedTextLabel *pathLabel;
+    //20220423 modify
     QPushButton *selPathButton;
     QPushButton* okButton;
 

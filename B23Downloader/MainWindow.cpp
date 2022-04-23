@@ -45,40 +45,44 @@ MainWindow::MainWindow(QWidget *parent)
     auto mainLayout = new QVBoxLayout(centralWidget());
     auto topLayout = new QHBoxLayout;
 
+    //20220423 zhushidiao
     // set up user info widgets
-    ufaceButton = new QToolButton;
-    ufaceButton->setText("登录");
-    ufaceButton->setFixedSize(32, 32);
-    ufaceButton->setIconSize(QSize(32, 32));
-    ufaceButton->setCursor(Qt::PointingHandCursor);
-    auto loginTextFont = font();
-    loginTextFont.setBold(true);
-    loginTextFont.setPointSize(font().pointSize() + 1);
-    ufaceButton->setFont(loginTextFont);
-    ufaceButton->setPopupMode(QToolButton::InstantPopup);
-    ufaceButton->setStyleSheet(R"(
-        QToolButton {
-            color: #00a1d6;
-            background-color: white;
-            border: none;
-        }
-        QToolButton::menu-indicator { image: none; }
-    )");
-    connect(ufaceButton, &QToolButton::clicked, this, &MainWindow::ufaceButtonClicked);
+//    ufaceButton = new QToolButton;
+//    ufaceButton->setText("登录");
+//    ufaceButton->setFixedSize(32, 32);
+//    ufaceButton->setIconSize(QSize(32, 32));
+//    ufaceButton->setCursor(Qt::PointingHandCursor);
+//    auto loginTextFont = font();
+//    loginTextFont.setBold(true);
+//    loginTextFont.setPointSize(font().pointSize() + 1);
+//    ufaceButton->setFont(loginTextFont);
+//    ufaceButton->setPopupMode(QToolButton::InstantPopup);
+//    ufaceButton->setStyleSheet(R"(
+//        QToolButton {
+//            color: #00a1d6;
+//            background-color: white;
+//            border: none;
+//        }
+//        QToolButton::menu-indicator { image: none; }
+//    )");
+//    connect(ufaceButton, &QToolButton::clicked, this, &MainWindow::ufaceButtonClicked);
 
-    unameLabel = new ElidedTextLabel;
-    unameLabel->setHintWidthToString("晚安玛卡巴卡！やさしい夢見てね");
-    topLayout->addWidget(ufaceButton);
-    topLayout->addWidget(unameLabel, 1);
+//    unameLabel = new ElidedTextLabel;
+//    unameLabel->setHintWidthToString("晚安玛卡巴卡！やさしい夢見てね");
+//    topLayout->addWidget(ufaceButton);
+//    topLayout->addWidget(unameLabel, 1);
+    //20220423 zhushidiao
 
     // set up download url lineEdit
     auto downloadUrlLayout = new QHBoxLayout;
-    downloadUrlLayout->setSpacing(0);
+    downloadUrlLayout->setSpacing(5);
     //202220421 new add
     maxtasknumedit=new QLineEdit;
     maxtasknumedit->setFixedHeight(32);
     maxtasknumedit->setClearButtonEnabled(true);
     maxtasknumedit->setPlaceholderText("3");
+    maxtasknumedit->setFixedWidth(120);
+
     //202220421 new add
     urlLineEdit = new QLineEdit;
     urlLineEdit->setFixedHeight(32);
@@ -143,8 +147,13 @@ void MainWindow::changemaxtasknum()
     {
         maxtasknum=finalmaxtasknum;
         QString tempstr=QString::number(maxtasknum);
+//        maxtasknumedit->toolTip("最大只能到"+tempstr);
+//        maxtasknumedit->setToolTipDuration(1000);
+//        maxtasknumedit->statusTip().append("最大只能到"+tempstr);
 //                tempstr=(QString)std::to_string(maxtasknum);
-        maxtasknumedit->setText(tempstr);
+//        maxtasknumedit->setText(tempstr);
+        maxtasknumedit->setText("最大只能到"+tempstr);
+        maxtasknumedit->repaint();
     }
 }
 void MainWindow::startGetUserInfo()
